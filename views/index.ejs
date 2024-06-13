@@ -1,0 +1,51 @@
+
+<%- include('partials/header.ejs'); -%>
+<body>
+    <div class="Main-section">
+        <div id="Mid-BOX-section">
+            <% if (locals.bookData1) { %>
+                <% bookData1.forEach(book => { %>
+                    <div class="BOX-content">
+                        <div class="div1">
+                            <div class="photo-box"><img class="photo-in-box" src="<%= book.book_cover %>" alt="book"/></div>
+                            <p style="font-weight: bold; padding: 10px;">Publish Date <%= book.book_pb %></p>
+                        </div>
+                        <div class="div2">
+                            <h2 style="width: 100%; height: 10px; font-size: 1.4rem; " class="Book-DD"><%= book.book_name %></h2>
+                            <p ><%= book.book_title %></p>
+                            <p style="font-weight: bold; ">Rating: <%= book.book_rating %></p>
+                        </div>
+                        <div class="div3">
+                                <form action="/edit" method="post">
+                                    <p id="title<%=book.id%>" class="Book-DD"><%= book.book_note %></p>
+                                    <input type="hidden" name="editItemId" value="<%= book.id %>">
+                                    <textarea id="input<%=book.id%>" class="Book-in" type="text" name="updatedItemTitle" value="<%= book.book_note %>" autocomplete="off"
+                                    autofocus="true" hidden="true"><%= book.book_note %></textarea>
+                        </div>
+                        <div class="div4">
+                                    <button id="done<%=book.id%>" class="edit-button btn" type="submit" hidden>OK</button>
+                                </form>
+                            <button id="edit<%=book.id%>" class="edit-button btn" onclick="handler('<%=book.id%>')">Edit</button>
+                            <form action="/delete" method="post">
+                                <input type="hidden" name="deleteItemId" value="<%= book.id %>">
+                                <button type="submit" class="delete-button btn">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } %> 
+        </div>
+    </div>
+</body>
+
+<%- include('partials/footer.ejs'); -%>
+
+<script>
+    function handler(id) {
+      document.getElementById("title" + id).setAttribute("hidden", true);
+      document.getElementById("edit" + id).setAttribute("hidden", true);
+      document.getElementById("done" + id).removeAttribute("hidden");
+      document.getElementById("input" + id).removeAttribute("hidden");
+    }
+</script>
+
