@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import axios from 'axios';
 import pg from 'pg';
+import 'dotenv/config'
 
 const app = express();
 const port = 3000;
@@ -9,17 +10,34 @@ const port = 3000;
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+// Database on local
+
+// const db = new pg.Client({
+//     user: "postgres",
+//     host: "localhost",
+//     database: "Notebook",
+//     password: "2589",
+//     port: 5432,
+// });
+// db.connect();
+
 const db = new pg.Client({
-    user: "postgres",
-    host: "localhost",
-    database: "Notebook",
-    password: "2589",
-    port: 5432,
+    connectionString: process.env.DATABASELINK,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
-db.connect();
+
+db.connect((err) => {
+    if (err) {
+        console.error('Connection error', err.stack);
+    } else {
+        console.log('Connected to the database');
+    }
+});
 
 async function baseData() {
-    const bookData = await db.query("SELECT * FROM ibook");
+    const bookData = await db.query("SELECT * FROM books");
     let bookL = [];
     bookData.rows.forEach((booklist) => {
         bookL.push(booklist);
@@ -116,4 +134,6 @@ app.post('/delete', async (req, res) => {
     }
 });
 
-app.listen(port, () => {console.log(`Server running on port ${port}`);});
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+});
