@@ -15,8 +15,8 @@ app.use(express.static("public"));
 // const db = new pg.Client({
 //     user: "postgres",
 //     host: "localhost",
-//     database: "Notebook",
-//     password: "2589",
+//     database: "Name of Your Database",
+//     password: "Your password",
 //     port: 5432,
 // });
 // db.connect();
@@ -96,7 +96,7 @@ app.post('/add-note', async (req, res) => {
         const Book_note = req.body['Review-text-in'];
         const Book_rating = req.body['stars'];
         await db.query(
-            "INSERT INTO ibook (Book_name, BooK_title, Book_cover, Book_PB, Book_note, Book_rating, isbn) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+            "INSERT INTO books (book_name, book_title, book_cover, book_pb, book_note, Book_rating, isbn) VALUES ($1, $2, $3, $4, $5, $6, $7)",
             [ bookd_name[0],bookd_title[0],bookd_cover[0],bookd_publishDates[0],Book_note,Book_rating,ISBN_S[0] ]
         );
         ISBN_S.splice(0, ISBN_S.length);
@@ -115,7 +115,7 @@ app.post('/edit', async (req, res) => {
     const edit_book_text = req.body.updatedItemTitle;
     const edit_book_id = req.body.editItemId;
     try {
-        await db.query('UPDATE ibook SET book_note = $1 WHERE id = $2', [edit_book_text, edit_book_id]);
+        await db.query('UPDATE books SET book_note = $1 WHERE id = $2', [edit_book_text, edit_book_id]);
         res.redirect('/');
     } catch (err) {
         console.error(err);
@@ -126,7 +126,7 @@ app.post('/edit', async (req, res) => {
 app.post('/delete', async (req, res) => {
     const bookId = req.body.deleteItemId;
     try {
-        await db.query('DELETE FROM ibook WHERE id = $1', [bookId]);
+        await db.query('DELETE FROM books WHERE id = $1', [bookId]);
         res.redirect('/');
     } catch (error) {
         console.error('Error deleting book:', error);
