@@ -1,87 +1,105 @@
 /************************************************ body ************************************************/
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
-    font-family: Nunito, sans-serif;
-  }
+	margin: 0px; 
+	padding: 0px; 
+	box-sizing: border-box;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+}
 
 body {
     margin: 0px;
     padding: 0px;
     height: 100vh;
+    background-color: #000000;
 }
-
 
 body::-webkit-scrollbar {display: none;}
 textarea {resize: none; }
 
 /************************************************ header section *************************************************/
 
-.nav-box {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    background-color: black;
-    width: 100%;
-    padding: 10px;
+
+.gradient-background {
+  background-color: #000000;
+  background-image: url("https://www.transparenttextures.com/patterns/micro-carbon.png");
 }
 
-.Wab-logo-name {
-    color: #FF9494;
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-#Add-review-book-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.8);
-    color: #000000;
-    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
-    border-radius: 15px;
-    font-size: 1.5rem;
-    padding: 15px;
-    text-decoration: none;
+.logo-square {
+  width: 10rem;
+  height: 4rem;
+  border-radius: 0.75rem;
 }
 
-#Add-review-book-bottom:hover {
-	background:linear-gradient(to bottom, #414141 5%, #414141 100%);
-	background-color:#ccc2a6;
-    color: #ffffff;
-}
-#Add-review-book-bottom:active {
-	position:relative;
-	top:1px;
+.icon-square {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
 }
 
-
-li, a{
-    font-weight: 500;
-    color: #FF9494;
-    font-family: Rubik;
-    text-decoration: none;
+.profile-img {
+  height: 100px;
+  border-radius: 50%;
 }
 
-.nav__links{
-    list-style: none;
+.navbar-collapse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #3e4149;
 }
-
-.nav__links li{
-    display: inline-block;
+.navbar-toggler,
+.navbar-brand {
+  z-index: 1;
 }
-
-.nav__links li a{
-    font-size: larger;
-    transition: all 0.3s ease 0s;
-    padding: 0 20px;
+.navbar-brand {
+  font-size: 1.8em;
 }
-
-.nav__links li a:hover{
-    color: #0088a9;
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar-collapse .nav-link {
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  color: #fff;
+}
+.navbar-collapse .nav-link:hover,
+.navbar-collapse .nav-link.active {
+  color: darkseagreen;
+}
+.nav-item:not(:last-child) {
+  border-bottom: 1px solid gray;
+  padding: 0.2em 4em;
+}
+@media screen and (min-width: 768px) {
+  .nav-item:not(:last-child) {
+    padding: 0.5em 8em;
+  }
+}
+.navbar-collapse.show {
+  transition: all 0.5s;
 }
 
 /************************************************ Main-section ************************************************/
@@ -94,6 +112,29 @@ li, a{
     align-items: center;
     background-color: #181818;
 }
+
+.Main-section-min {
+  margin-top: 6rem;
+}
+
+#Mid-BOX {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  margin-top: 7rem;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.Mid-BOX-section {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
 
 .BOX-content {
     display: grid;
@@ -198,6 +239,10 @@ textarea {
         margin: 20px;
     }
 
+    .Mid-BOX-section {
+      flex-direction: column-reverse;
+    }
+
     .div1 {
         grid-area: unset;
     }
@@ -225,6 +270,35 @@ textarea {
     .Book-in {
         height: 80px;
     }
+
+
+
+    .preview-bookcover,
+    .preview-bookcover-name,
+    .preview-bookcover-subtitle,
+    .preview-bookcover-publishDates,
+    .review-book-text {
+        width: 100%;
+    }
+    
+    .add-books,
+    .b-add-review {
+        width: 300px;
+    }
+
+    .Search-books {
+        font-size: 10px;
+        font-weight: 900;
+    }
+
+    h3 {
+        font-size: 15px;
+    }
+
+    .review-book-text {
+        width: 300px;
+        height: 260px;
+    }
 }
 
 /************************************************ About CSS ************************************************/
@@ -238,7 +312,7 @@ textarea {
 
 .responsive-container-block {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-start;
     margin-top: 0px;
     margin-right: auto;
@@ -270,10 +344,7 @@ textarea {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 10px;
-    padding-right: 50px;
-    padding-bottom: 10px;
-    padding-left: 50px;
+    padding: 0px;
 }
 
 .text-blk.headingText {
@@ -705,27 +776,27 @@ textarea {
 
   .responsive-container-block.bigContainer {
     padding-top: 0px;
-    padding-right: 50px;
+    padding-right: 0px;
     padding-bottom: 0px;
-    padding-left: 50px;
+    padding-left: 0px;
   }
 }
 
 @media (max-width: 500px) {
   .responsive-container-block.Container {
-    padding-top: 10px;
+    padding-top: 0px;
     padding-right: 0px;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
     padding-left: 0px;
     width: 100%;
     max-width: 100%;
   }
 
   .responsive-container-block.bigContainer {
-    padding-top: 10px;
-    padding-right: 25px;
-    padding-bottom: 10px;
-    padding-left: 25px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
   }
 
   .allText {
@@ -737,10 +808,10 @@ textarea {
   }
 
   .responsive-container-block.bigContainer {
-    padding-top: 10px;
-    padding-right: 20px;
-    padding-bottom: 10px;
-    padding-left: 20px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
   }
 
   .explore {
@@ -794,7 +865,7 @@ textarea {
     justify-content: center;
 }
   
-input[type=text], select, textarea {
+.edit-note, select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -810,7 +881,7 @@ input[type=submit] {
     color: white;
     padding: 12px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 30px;
     cursor: pointer;
 }
   
@@ -825,6 +896,233 @@ input[type=submit]:hover {
     padding: 20px;
 }
 
+.M-contact {
+  display: flex;
+  flex-direction: column;
+}
+
+/************************************************ addbook ************************************************/
+
+.G1 {
+  margin: 10px;
+  width: 90%;
+}
+
+.G2 {
+  margin: 10px;
+}
+
+.CC {
+  display: flex;
+}
+
+.Search-books {
+  border-radius: 1rem;
+  font-weight: bold;
+  color: #000000;
+  box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
+  font-size: 18px;
+  height: 50px;
+  border-radius: 20px;
+  background-color: #bbbbbb;
+}
+
+.Search-books:hover {
+background:linear-gradient(to bottom, #414141 5%, #414141 100%);
+background-color:#ccc2a6;
+  color: #ffffff;
+}
+.Search-books:active {
+position:relative;
+top:1px;
+}
+
+.Search-books-bar {
+  font-size: 20px;
+  width: 100%;
+  height: 50px;
+  border-radius: 20px;
+  background-color: #bbbbbb;
+}
+
+input::placeholder {
+  text-align: center;
+}
+
+.photo-in-addbook {
+  width: 100%;
+  height: 100%;
+}
+
+textarea {
+  resize: none;
+}
+
+.Book-in {
+  margin-top: 5px;
+  width: 590px;
+  height: 180px;
+  background-color:#cccccc;
+}
+
+.addbooks-page{
+  color: #FF9494;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-right: 45%;
+}
+
+input::placeholder {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.preview-bookcover {
+  background: #D9D9D9;
+}
+
+.preview-bookcover-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+  text-align: center;
+  border-radius: 10px;
+  background: #bbbbbb;
+  flex-shrink: 0;
+}
+
+.preview-bookcover-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #bbbbbb;
+  flex-shrink: 0;
+
+}
+.preview-bookcover-publishDates {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 10px 10px;
+  text-align: center;
+  background: #bbbbbb;
+  flex-shrink: 0;
+}
+
+.review-book-text {
+  display: flex;
+  height: 460px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #bbbbbb;
+  font-size: larger;
+}
+
+.add-books {
+  width: 400px;
+  height: 60px;
+  border-radius: 20px;
+  background-color: #bbbbbb;
+}
+
+.b-add-review {
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+  font-weight: bold;
+  color: #000000;
+  box-shadow: 0px 4px 4px 0px rgba(34, 34, 34, 0.25);
+  font-size: 18px;
+  width: 240px;
+  height: 60px;
+  border-radius: 20px;
+  margin-top: -10px;
+  background-color: #bbbbbb;
+}
+
+.b-add-review:hover {
+background:linear-gradient(to bottom, #1b1b1b 5%, #1b1b1b 5% 100%);
+background-color:#ccc2a6;
+  color: #ffffff;
+}
+.b-add-review:active {
+position:relative;
+top:1px;
+}
+
+.Add-book-name-h3 {
+  padding: 10px;
+  color: #252525;
+}
+
+.C2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/************************************************ rating ************************************************/
+
+.rating-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row-reverse;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+    margin: 20px;
+	gap: 10px;
+	border-radius: 30px;
+	border: none;
+	position: relative;
+	background: #808080;
+	box-shadow: 0 1px 1px hsl(0deg 0% 0%/0.075), 0 2px 2px hsl(0deg 0% 0%/0.075),
+		0 4px 4px hsl(0deg 0% 0%/0.075), 0 8px 8px hsl(0deg 0% 0%/0.075),
+		0 16px 16px hsl(0deg 0% 0%/0.075);
+}
+
+.rating-container input {
+	display: none;
+}
+
+.rating-container label {
+	height: 50px;
+	width: 50px;
+	transform-origin: "center center";
+}
+
+.rating-container label svg {
+	transition: transform 0.4s ease-in-out;
+	opacity: 0.5;
+}
+
+.rating-container label:hover svg {
+	transform: scale(1.25) rotate(10deg);
+	opacity: 1;
+}
+
+.rating-container input:checked ~ label svg {
+	transform: scale(1.25) rotate(10deg);
+	opacity: 1;
+}
+
+.rating-container input:checked + label:hover svg {
+	opacity: 1;
+}
+
+.rating-container input:checked ~ label:hover svg,
+.rating-container input:checked ~ label:hover ~ label svg {
+	opacity: 1;
+}
+
+.rating-container label:hover ~ input:checked ~ label svg {
+	opacity: 1;
+}
+
+
   
 /************************************************ footer ************************************************/
 
@@ -837,6 +1135,10 @@ input[type=submit]:hover {
     margin-bottom: 0;
     background-color: rgb(0, 0, 0);
     color: rgb(158, 158, 158);
+}
+
+.footerP {
+    margin-top: 15px;
 }
 
 .footermagin {

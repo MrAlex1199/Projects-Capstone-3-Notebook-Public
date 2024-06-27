@@ -57,7 +57,7 @@ app.get('/', async (req, res) => {
 
 app.get('/about', (req, res) => {res.render('about.ejs');});
 app.get('/contact', (req, res) => {res.render('contact.ejs');});
-app.get('/addbooks', (req, res) => {res.render('partials/addbooks.ejs');});
+app.get('/addbooks', (req, res) => {res.render('addbooks.ejs');});
 
 const ISBN_S = [];
 const bookd_name = [];
@@ -85,7 +85,7 @@ app.post('/Search', async (req, res) => {
         bookd_title.push(bookauthors);
         bookd_cover.push(bookcover);
         bookd_publishDates.push(publishDates);
-        res.render('partials/addbooks.ejs', { bookData: { title, bookauthors, bookcover, publishDates, ISBN } });
+        res.render('addbooks.ejs', { bookData: { title, bookauthors, bookcover, publishDates, ISBN } });
     } catch {
         res.redirect("/addbooks");
     }
