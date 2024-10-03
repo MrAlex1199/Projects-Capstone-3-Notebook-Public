@@ -12,21 +12,22 @@ app.use(express.static("public"));
 
 // Database on local
 
-// const db = new pg.Client({
-//     user: "postgres",
-//     host: "localhost",
-//     database: "Name of Your Database",
-//     password: "Your password",
-//     port: 5432,
-// });
-// db.connect();
-
 const db = new pg.Client({
-    connectionString: process.env.DATABASELINK,
-    ssl: {
-        rejectUnauthorized: false
-    }
+    user: "postgres",
+    host: "localhost",
+    database: "Notebook",
+    password: "2589",
+    port: 5432,
 });
+
+// Database online
+
+// const db = new pg.Client({
+//     connectionString: process.env.DATABASELINK,
+//     ssl: {
+//         rejectUnauthorized: false
+//     }
+// });
 
 db.connect((err) => {
     if (err) {
@@ -37,7 +38,7 @@ db.connect((err) => {
 });
 
 async function baseData() {
-    const bookData = await db.query("SELECT * FROM books");
+    const bookData = await db.query("SELECT * FROM ibook");  //You table name
     let bookL = [];
     bookData.rows.forEach((booklist) => {
         bookL.push(booklist);
