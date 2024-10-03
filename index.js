@@ -116,7 +116,7 @@ app.post('/edit', async (req, res) => {
     const edit_book_text = req.body.updatedItemTitle;
     const edit_book_id = req.body.editItemId;
     try {
-        await db.query('UPDATE books SET book_note = $1 WHERE id = $2', [edit_book_text, edit_book_id]);
+        await db.query('UPDATE ibook SET book_note = $1 WHERE id = $2', [edit_book_text, edit_book_id]);
         res.redirect('/');
     } catch (err) {
         console.error(err);
@@ -127,7 +127,7 @@ app.post('/edit', async (req, res) => {
 app.post('/delete', async (req, res) => {
     const bookId = req.body.deleteItemId;
     try {
-        await db.query('DELETE FROM books WHERE id = $1', [bookId]);
+        await db.query('DELETE FROM ibook WHERE id = $1', [bookId]);
         res.redirect('/');
     } catch (error) {
         console.error('Error deleting book:', error);
